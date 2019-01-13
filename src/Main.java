@@ -47,7 +47,7 @@ public class Main {
 */
 
     public static void main(String[] args) {
-        Mat mat = Imgcodecs.imread("d:\\video_tutorial.jpg");
+        Mat mat = Imgcodecs.imread("d:\\Lenna.png");
         if (mat.empty()) {
             System.out.println("Не удалось загрузить изображение");
             return;
