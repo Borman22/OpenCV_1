@@ -6,6 +6,7 @@ import org.opencv.highgui.HighGui;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
+import java.util.*;
 
 public class Main {
         static {
@@ -47,13 +48,29 @@ public class Main {
 */
 
     public static void main(String[] args) {
-        Mat mat = Imgcodecs.imread("d:\\Lenna.png");
-        if (mat.empty()) {
+        Mat mat1 = Imgcodecs.imread("d:\\Lenna.png");
+        if (mat1.empty()) {
             System.out.println("Не удалось загрузить изображение");
             return;
         }
-        Imgproc.ellipse(mat, new RotatedRect(new Point(200, 200), new Size(100, 60), 90), new Scalar(0), Core.FILLED);
-        showImage(mat, "Текст в заголовке окна");
+        Mat mat2 = new Mat(mat1.width(), mat1.height(), CvType.CV_8UC3);
+        Mat mat3 = new Mat();
+
+
+        Core.repeat(mat1, 3, 3, mat3);
+
+//        List<Mat> list1 = new ArrayList<Mat>();
+//        List<Mat> list2 = new ArrayList<Mat>();
+//        list1.add(mat2);
+//        list1.add(mat1);
+//
+//        Core.vconcat(list1, mat3);
+
+
+
+
+
+        showImage(mat3, "Текст в заголовке окна");
     }
 
     public static void showImage(Mat img, String title) {
@@ -68,6 +85,4 @@ public class Main {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
-
-
 }
